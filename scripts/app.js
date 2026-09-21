@@ -144,8 +144,50 @@ function calculate() {
 
 function square() {
     const display = document.getElementById("display");
-    display.value = Math.pow(Number(display.value), 2);
-    recordCalculation("Scientific Calculator", `Result: ${display.value}`);
+    const expression = display.value.trim();
+
+    if (!expression) {
+        display.value = "Error";
+        return;
+    }
+
+    // Square only the last operand, so 3×5x² becomes 3×5² = 75.
+    let start = expression.length;
+
+    if (expression.endsWith(")")) {
+        let depth = 0;
+
+        for (let i = expression.length - 1; i >= 0; i--) {
+            if (expression[i] === ")") depth++;
+            if (expression[i] === "(") {
+                depth--;
+                if (depth === 0) {
+                    start = i;
+                    break;
+                }
+            }
+        }
+    } else {
+        const match = expression.match(/(?:\d+\.?\d*|\.\d+)$/);
+        if (!match) {
+            display.value = "Error";
+            return;
+        }
+        start = match.index;
+    }
+
+    const operand = expression.slice(start);
+    const before = expression.slice(0, start);
+
+    // Wrap the operand so repeated squaring works predictably.
+    display.value = `${before}(${operand})**2`;
+
+    try {
+        display.value = Function(`"use strict"; return (${display.value})`)();
+        recordCalculation("Scientific Calculator", `Result: ${display.value}`);
+    } catch {
+        display.value = "Error";
+    }
 }
 
 function squareRoot() {
