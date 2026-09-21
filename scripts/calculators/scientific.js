@@ -2,7 +2,7 @@ import { recordCalculation } from "../history.js";
 
 
 
-function scientificCalculator() {
+export function scientificCalculator() {
     calculatorTitle.textContent = "🔬 Scientific Calculator";
 
     calculatorContent.innerHTML = `
@@ -41,20 +41,20 @@ function scientificCalculator() {
     `;
 }
 
-function appendValue(value) {
+export function appendValue(value) {
     document.getElementById("display").value += value;
 }
 
-function clearDisplay() {
+export function clearDisplay() {
     document.getElementById("display").value = "";
 }
 
-function deleteLast() {
+export function deleteLast() {
     const display = document.getElementById("display");
     display.value = display.value.slice(0, -1);
 }
 
-function calculate() {
+export function calculate() {
     const display = document.getElementById("display");
     try {
         display.value = Function(`"use strict"; return (${display.value})`)();
@@ -64,7 +64,7 @@ function calculate() {
     }
 }
 
-function square() {
+export function square() {
     const display = document.getElementById("display");
     const expression = display.value.trim();
 
@@ -103,19 +103,19 @@ function square() {
     }
 }
 
-function squareRoot() {
+export function squareRoot() {
     const display = document.getElementById("display");
     display.value = Math.sqrt(Number(display.value));
     recordCalculation("Scientific Calculator", `Result: ${display.value}`);
 }
 
-function sin() {
+export function sin() {
     const display = document.getElementById("display");
     display.value = Math.sin(Number(display.value) * Math.PI / 180);
     recordCalculation("Scientific Calculator", `Result: ${display.value}`);
 }
 
-function cos() {
+export function cos() {
     const display = document.getElementById("display");
     display.value = Math.cos(Number(display.value) * Math.PI / 180);
     recordCalculation("Scientific Calculator", `Result: ${display.value}`);
