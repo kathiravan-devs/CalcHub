@@ -2,7 +2,7 @@ import { input, showResult, format } from "./common.js";
 
 
 
-function emiCalculator() {
+export function emiCalculator() {
     calculatorTitle.textContent = "🏦 EMI Calculator";
 
     calculatorContent.innerHTML = `
@@ -14,7 +14,7 @@ function emiCalculator() {
     `;
 }
 
-function calculateEMI() {
+export function calculateEMI() {
     const P = Number(document.getElementById("loan").value);
     const annualRate = Number(document.getElementById("rate").value);
     const N = Number(document.getElementById("months").value);
@@ -42,7 +42,7 @@ function calculateEMI() {
     `);
 }
 
-function gstCalculator() {
+export function gstCalculator() {
     calculatorTitle.textContent = "💸 GST Calculator";
 
     calculatorContent.innerHTML = `
@@ -53,7 +53,7 @@ function gstCalculator() {
     `;
 }
 
-function calculateGST() {
+export function calculateGST() {
     const price = Number(document.getElementById("price").value);
     const rate = Number(document.getElementById("gstRate").value);
 
@@ -73,7 +73,7 @@ function calculateGST() {
     `);
 }
 
-function discountCalculator() {
+export function discountCalculator() {
     calculatorTitle.textContent = "🏷️ Discount Calculator";
 
     calculatorContent.innerHTML = `
@@ -84,7 +84,7 @@ function discountCalculator() {
     `;
 }
 
-function calculateDiscount() {
+export function calculateDiscount() {
     const price = Number(document.getElementById("originalPrice").value);
     const rate = Number(document.getElementById("discountRate").value);
 
@@ -99,7 +99,7 @@ function calculateDiscount() {
     `);
 }
 
-function salaryCalculator() {
+export function salaryCalculator() {
     calculatorTitle.textContent = "💼 Salary Calculator";
 
     calculatorContent.innerHTML = `
@@ -110,7 +110,7 @@ function salaryCalculator() {
     `;
 }
 
-function calculateSalary() {
+export function calculateSalary() {
     const salary = Number(document.getElementById("salary").value);
     const deductions = Number(document.getElementById("deductions").value);
 
@@ -122,7 +122,7 @@ function calculateSalary() {
     `);
 }
 
-function interestCalculator() {
+export function interestCalculator() {
     calculatorTitle.textContent = "📈 Interest Calculator";
 
     calculatorContent.innerHTML = `
@@ -134,7 +134,7 @@ function interestCalculator() {
     `;
 }
 
-function calculateInterest() {
+export function calculateInterest() {
     const P = Number(document.getElementById("principal").value);
     const R = Number(document.getElementById("interestRate").value);
     const T = Number(document.getElementById("years").value);
