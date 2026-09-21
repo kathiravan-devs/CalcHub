@@ -2,7 +2,7 @@ import { input, showResult } from "./common.js";
 
 
 
-function cgpaCalculator() {
+export function cgpaCalculator() {
     calculatorTitle.textContent = "🎓 CGPA Calculator";
 
     calculatorContent.innerHTML = `
@@ -15,7 +15,7 @@ function cgpaCalculator() {
     `;
 }
 
-function calculateCGPA() {
+export function calculateCGPA() {
     const values = ["sem1", "sem2", "sem3", "sem4"]
         .map(id => Number(document.getElementById(id).value));
 
@@ -29,7 +29,7 @@ function calculateCGPA() {
     `);
 }
 
-function marksCalculator() {
+export function marksCalculator() {
     calculatorTitle.textContent = "📝 Marks Calculator";
 
     calculatorContent.innerHTML = `
@@ -43,7 +43,7 @@ function marksCalculator() {
     `;
 }
 
-function calculateMarks() {
+export function calculateMarks() {
     const values = ["mark1", "mark2", "mark3", "mark4", "mark5"]
         .map(id => Number(document.getElementById(id).value));
 
@@ -58,7 +58,7 @@ function calculateMarks() {
     `);
 }
 
-function gpaCalculator() {
+export function gpaCalculator() {
     calculatorTitle.textContent = "📚 GPA Calculator";
 
     calculatorContent.innerHTML = `
@@ -69,7 +69,7 @@ function gpaCalculator() {
     `;
 }
 
-function calculateGPA() {
+export function calculateGPA() {
     const points = Number(document.getElementById("gradePoints").value);
     const credits = Number(document.getElementById("credits").value);
 
