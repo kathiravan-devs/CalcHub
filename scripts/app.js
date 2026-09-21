@@ -146,44 +146,35 @@ function square() {
     const display = document.getElementById("display");
     const expression = display.value.trim();
 
-    if (!expression) {
+    if (!expression || expression === "Error") {
         display.value = "Error";
         return;
     }
 
-    // Square only the last operand, so 3×5x² becomes 3×5² = 75.
-    let start = expression.length;
+    // Find the final numeric operand only.
+    // Example: 3*5 -> 3*25, then normal evaluation gives 75.
+    const match = expression.match(/(?:\\d+(?:\\.\\d*)?|\\.\\d+)$/);
 
-    if (expression.endsWith(")")) {
-        let depth = 0;
-
-        for (let i = expression.length - 1; i >= 0; i--) {
-            if (expression[i] === ")") depth++;
-            if (expression[i] === "(") {
-                depth--;
-                if (depth === 0) {
-                    start = i;
-                    break;
-                }
-            }
-        }
-    } else {
-        const match = expression.match(/(?:\d+\.?\d*|\.\d+)$/);
-        if (!match) {
-            display.value = "Error";
-            return;
-        }
-        start = match.index;
+    if (!match) {
+        display.value = "Error";
+        return;
     }
 
-    const operand = expression.slice(start);
-    const before = expression.slice(0, start);
+    const operand = Number(match[0]);
 
-    // Wrap the operand so repeated squaring works predictably.
-    display.value = `${before}(${operand})**2`;
+    if (!Number.isFinite(operand)) {
+        display.value = "Error";
+        return;
+    }
+
+    const squared = operand * operand;
+    const before = expression.slice(0, match.index);
+
+    display.value = before + squared;
 
     try {
-        display.value = Function(`"use strict"; return (${display.value})`)();
+        const result = Function(`"use strict"; return (${display.value})`)();
+        display.value = result;
         recordCalculation("Scientific Calculator", `Result: ${display.value}`);
     } catch {
         display.value = "Error";
