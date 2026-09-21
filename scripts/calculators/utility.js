@@ -2,7 +2,7 @@ import { input, showResult } from "./common.js";
 
 
 
-function percentageCalculator() {
+export function percentageCalculator() {
     calculatorTitle.textContent = "📊 Percentage Calculator";
 
     calculatorContent.innerHTML = `
@@ -13,7 +13,7 @@ function percentageCalculator() {
     `;
 }
 
-function calculatePercentage() {
+export function calculatePercentage() {
     const obtained = Number(document.getElementById("obtained").value);
     const total = Number(document.getElementById("totalValue").value);
 
@@ -30,7 +30,7 @@ function calculatePercentage() {
     `);
 }
 
-function unitCalculator() {
+export function unitCalculator() {
     calculatorTitle.textContent = "📏 Unit Converter";
 
     calculatorContent.innerHTML = `
@@ -51,7 +51,7 @@ function unitCalculator() {
     `;
 }
 
-function convertUnit() {
+export function convertUnit() {
     const value = Number(document.getElementById("unitValue").value);
     const conversion = document.getElementById("conversion").value;
     let result;
@@ -71,7 +71,7 @@ function convertUnit() {
     `);
 }
 
-function ageCalculator() {
+export function ageCalculator() {
     calculatorTitle.textContent = "🎂 Age Calculator";
 
     calculatorContent.innerHTML = `
@@ -84,7 +84,7 @@ function ageCalculator() {
     `;
 }
 
-function calculateAge() {
+export function calculateAge() {
     const dobValue = document.getElementById("dob").value;
 
     if (!dobValue) {
