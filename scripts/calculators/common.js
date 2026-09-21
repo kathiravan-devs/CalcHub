@@ -2,7 +2,7 @@ import { recordCalculation } from "../history.js";
 
 
 
-function input(id, label, type = "number", min = "", max = "") {
+export function input(id, label, type = "number", min = "", max = "") {
     return `
         <div class="form-group">
             <label>${label}</label>
@@ -13,7 +13,7 @@ function input(id, label, type = "number", min = "", max = "") {
 
 
 
-function showResult(message) {
+export function showResult(message) {
     const result = document.getElementById("result");
     result.innerHTML = `<div class="result">${message}</div>`;
 
@@ -29,6 +29,6 @@ function showResult(message) {
 
 
 
-function format(number) {
+export function format(number) {
     return Number(number).toLocaleString("en-IN", { maximumFractionDigits: 2 });
 }
